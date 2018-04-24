@@ -1,0 +1,10 @@
+<table> 
+  <tr>
+    <th *ngFor="let column of columns">
+      {{column?.title}}
+    </th>
+  </tr>
+  <tr *ngFor="let spell of showData" (click)="castSpell(spell)">
+    <td *ngFor="let cell of spell">{{cell | json}}</td>
+  </tr>
+</table>

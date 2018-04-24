@@ -1,0 +1,155 @@
+[
+  {
+    "name": "Aneantissement",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Chaines de glace",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Tsointsoin",
+    "class": "dk",
+    "type": "buff"
+  }, {
+    "name": "Frappe de givre",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Frappe purulante",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Frappe runique",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Froid devorant",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Gel de l'esprit",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Passage de givre",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Pillier de givre",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Rafale hurlante",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Renforcer l'arme runique",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Robustesse glaciale",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Toucher de glace",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Armee des morts",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Carapasse anti-magie",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Frappe de peste",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Frappe necrotique",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Mort et decomposition",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Poigne de la mort",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Porte de la mort",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Pousse de fievre",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Reanimation d'un alié",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "reanimation morbide",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Voile mortel",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "drain sanglant",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "frappe de mort",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Frappe de sang",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "furoncle sanglant",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Pacte mortel",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Pestilance",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "sombre ordre",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Sombre simulacre",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Strangulation",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Connexion runique",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Arme runique dansante",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Bouclier d'os",
+    "class": "dk",
+    "type": "attack"
+  }, {
+    "name": "Sang vamipirique",
+    "class": "dk",
+    "type": "attack"
+  }
+]
