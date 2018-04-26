@@ -37,3 +37,4 @@ export class RemoveTarget implements Action {
   readonly type = REMOVE_TARGET;
   constructor(public payload: any) {}
 }
+

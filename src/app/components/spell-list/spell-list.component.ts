@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BuffModel } from '../../models/buff.model';
 import { isString, isNumber, isObject } from 'util';
 import { takeChild } from '../../core/utils/utils';
+import { AppState } from '../../core/store/store.variables';
+import { Store } from '@ngrx/store';
+import { CastSpell } from '../../core/store/spell/spell.actions';
 
 @Component({
   selector: 'app-spell-list',
@@ -25,7 +28,7 @@ export class SpellListComponent implements OnInit {
   spells: BuffModel[] = [];
   showData: any[] = [];
 
-  constructor() {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.spells = [
@@ -36,7 +39,7 @@ export class SpellListComponent implements OnInit {
         }
       }),
       new BuffModel({
-        name: 'carapace de glace', type: 'CD',
+        name: 'carapace de glace', type: 'buff',
         aditionalCharacteristics: {
           armor: {value: 50, unit: '%'}
         }
@@ -56,7 +59,8 @@ export class SpellListComponent implements OnInit {
     }
   }
 
-  castSpell(spell) {
-    console.log(spell);
+  castSpell(spellName) {
+    const finder = this.spells.find((spellI) => spellI.name === spellName);
+    this.store.dispatch(new CastSpell(finder));
   }
 }

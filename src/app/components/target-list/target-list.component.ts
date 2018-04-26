@@ -30,7 +30,7 @@ export class TargetListComponent {
   }
 
   isSelected(target: CharacterModel): boolean {
-    return !!this.selectedList.find((targetI) => targetI === target);
+    return !!this.selectedList.find((targetI) => targetI.name === target.name);
   }
 
   targetClass(target: CharacterModel) {

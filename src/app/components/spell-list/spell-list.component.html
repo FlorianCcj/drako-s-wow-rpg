@@ -4,7 +4,7 @@
       {{column?.title}}
     </th>
   </tr>
-  <tr *ngFor="let spell of showData" (click)="castSpell(spell)">
+  <tr *ngFor="let spell of showData" (click)="castSpell(spell[0])">
     <td *ngFor="let cell of spell">{{cell | json}}</td>
   </tr>
 </table>
