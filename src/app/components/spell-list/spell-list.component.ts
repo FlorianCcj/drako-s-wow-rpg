@@ -44,6 +44,12 @@ export class SpellListComponent implements OnInit {
           armor: {value: 50, unit: '%'}
         }
       }),
+      new BuffModel({
+        name: 'Toucher de glace', type: 'debuff',
+        aditionalCharacteristics: {
+          armor: {value: 50, unit: '%'}
+        }
+      }),
     ];
     this.showData = this.spells.map((spell) => {
       return this.columns.map(column => this.takeField(spell, [...column.field]));

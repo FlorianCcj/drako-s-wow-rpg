@@ -9,11 +9,16 @@ import { CharacterModel } from '../../models/character.model';
 export class UserAditionalCharacteristicsComponent implements OnChanges {
 
   @Input() user;
+  showAditionalCharacteristics = true;
 
   constructor() {}
 
   ngOnChanges() {
     this.user = new CharacterModel(this.user);
+  }
+
+  toogleAditionalCharacteristicsDisplay() {
+    this.showAditionalCharacteristics = !this.showAditionalCharacteristics;
   }
 
 }

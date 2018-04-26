@@ -1,5 +1,5 @@
-Aditional Characteristics
+<h1 (click)="toogleAditionalCharacteristicsDisplay()">Aditional Characteristics</h1>
 
-<pre>
+<pre *ngIf="showAditionalCharacteristics">
   {{user?.aditionalCharacteristics | json}}
 </pre>

@@ -1,4 +1,6 @@
-<form [formGroup]="userForm">
+<h1 (click)="toogleUserCaracVisibility()">User Carac</h1>
+
+<form [formGroup]="userForm" *ngIf="showCarac">
   <div>
     <label for="force">Force</label>
     <input 

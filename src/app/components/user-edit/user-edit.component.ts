@@ -12,6 +12,7 @@ export class UserEditComponent implements OnChanges {
 
   @Input() user: CharacterModel;
   public userForm: FormGroup;
+  showCarac = true;
 
   constructor(private fb: FormBuilder) {
     this.initForm();
@@ -50,5 +51,9 @@ export class UserEditComponent implements OnChanges {
 
   calculPropertyDiceToLaunch(property) {
     return calculDiceToLaunch(this.userForm.value[property]);
+  }
+
+  toogleUserCaracVisibility() {
+    this.showCarac = !this.showCarac;
   }
 }

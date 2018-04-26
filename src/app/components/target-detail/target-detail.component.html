@@ -2,8 +2,12 @@ Name: {{target.name}}
 <br/> buff: 
   <span *ngFor="let buff of target?.buffs">
     {{buff?.name}}
+    <span *ngIf="buff?.duration > 1">({{buff?.duration}})</span>
+    <span *ngIf="buff?.duration <= 1" class="lastTurn">last turn</span>
   </span>
 <br/> debuff: 
   <span *ngFor="let debuff of target?.debuffs">
-    {{buff?.name}}
+    {{debuff?.name}} 
+    <span *ngIf="debuff?.duration > 1">({{debuff?.duration}})</span>
+    <span *ngIf="debuff?.duration <= 1" class="lastTurn">last turn</span>
   </span>

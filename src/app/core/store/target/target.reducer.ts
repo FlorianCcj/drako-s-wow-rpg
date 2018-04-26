@@ -4,11 +4,13 @@ import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
 
 export interface TargetState {
+  user: CharacterModel;
   list: CharacterModel[];
   target: CharacterModel[];
 }
 
 export const initialTargetState = {
+  user: null,
   list: [],
   target: [],
 };
@@ -16,7 +18,14 @@ export const initialTargetState = {
 export function targetReducer(state: TargetState = initialTargetState, action) {
   switch (action.type) {
     case targetActions.ADD_TARGET:
-      return {...state, list: [...state.list, new CharacterModel(action.payload)]};
+      if (action.payload.type === 'user') {
+
+      }
+      return {
+        ...state,
+        user: action.payload.type === 'user' ? action.payload : state.user,
+        list: [...state.list, new CharacterModel(action.payload)]
+      };
     case targetActions.TARGET_TARGET:
       return {...state, target: [...state.target, new CharacterModel(action.payload)]};
     case targetActions.REMOVE_TARGET:

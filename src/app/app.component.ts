@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from './core/store/store.variables';
 import { Observable } from 'rxjs/Observable';
 import { CharacterModel } from './models/character.model';
-import { AddUser } from './core/store/user/user.actions';
+import { AddTarget } from './core/store/target/target.actions';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +18,10 @@ export class AppComponent {
   constructor(
     private store: Store<AppState>
   ) {
-    this.user$ = this.store.select(appState => appState.user.user);
+    this.user$ = this.store.select(appState => appState.target.user);
     this.targetList$ = this.store.select(appState => appState.target.list);
     this.selectedList$ = this.store.select(appState => appState.target.target);
-    this.store.dispatch(new AddUser({
+    this.store.dispatch(new AddTarget({
       name: 'moi',
       type: 'user',
       characteristics: {
