@@ -1,5 +1,9 @@
 <h1 (click)="toogleAditionalCharacteristicsDisplay()">Aditional Characteristics</h1>
 
-<pre *ngIf="showAditionalCharacteristics">
-  {{user?.aditionalCharacteristics | json}}
-</pre>
+<div *ngIf="showAditionalCharacteristics">
+  armor: {{user?.aditionalCharacteristics?.armor?.value}}
+  <br/>manaPoint: {{user?.aditionalCharacteristics?.manaPoint?.value}}
+  <br/>lifePoint: {{user?.aditionalCharacteristics?.lifePoint?.value}}
+  <br/>criticalChance: {{user?.aditionalCharacteristics?.criticalChance?.value}}
+  <br/>dodgeChance: {{user?.aditionalCharacteristics?.dodgeChance?.value}}
+</div>

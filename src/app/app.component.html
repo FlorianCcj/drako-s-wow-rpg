@@ -1,8 +1,8 @@
 <app-user-edit [user]="user$ | async"></app-user-edit>
 <app-user-aditional-characteristics [user]="user$ | async"></app-user-aditional-characteristics>
-<!--app-user-ressources 
-  [userRessources]="userRessources$ | async"
-></app-user-ressources-->
+<app-user-ressources 
+  [user]="user$ | async"
+></app-user-ressources>
 <button (click)="handleNewRoundClick()">New Round</button>
 <button (click)="handleHaveANapClick()">Have a nap</button>
 <app-target-creation></app-target-creation>

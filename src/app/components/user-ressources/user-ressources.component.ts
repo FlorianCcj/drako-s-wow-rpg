@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SettingsService } from '../../core/services/settings.service';
 
 @Component({
   selector: 'app-user-ressources',
@@ -7,7 +8,11 @@ import { Component, Input } from '@angular/core';
 })
 export class UserRessourcesComponent {
   @Input() user;
+  showResources = true;
 
-  constructor() { }
+  constructor(public settings: SettingsService) { }
 
+  toogleResourcesDisplay() {
+    this.showResources = !this.showResources;
+  }
 }

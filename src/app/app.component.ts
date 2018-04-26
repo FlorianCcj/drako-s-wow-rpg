@@ -30,6 +30,16 @@ export class AppComponent {
         vitalite: {value: 25},
         intel: {value: 10},
         charisme: {value: 10},
+      },
+      resources: {
+        bloodRune: {value: 0, partial: 0, maxValue: 2},
+        frostRune: {value: 0, partial: 0, maxValue: 2},
+        unholyRune: {value: 0, partial: 0, maxValue: 2},
+        runicPoint: {value: 0, partial: 0, maxValue: 100},
+        manaPoint: {value: 0, partial: 0, maxValue: 2000},
+        lifePoint: {value: 0, partial: 0, maxValue: 2000},
+        rage: {value: 0, partial: 0, maxValue: 100},
+        energy: {value: 0, partial: 0, maxValue: 100},
       }
     }));
   }

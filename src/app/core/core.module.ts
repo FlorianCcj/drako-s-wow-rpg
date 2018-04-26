@@ -7,6 +7,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {StoreDevtoolsModule, StoreDevtoolsOptions} from '@ngrx/store-devtools';
 import {environment} from '../../environments/environment';
+import { SettingsService } from './services/settings.service';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {environment} from '../../environments/environment';
       logOnly: environment.production
     })
   ],
+  providers: [SettingsService],
   declarations: []
 })
 export class CoreModule {

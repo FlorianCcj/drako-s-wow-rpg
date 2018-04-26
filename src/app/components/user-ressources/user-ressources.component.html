@@ -1,11 +1,43 @@
-User Resources :
-
-  bloodRune: {{user?.resources?.bloodRune.value}} ({{user?.resources?.bloodRune.partial}}) / {{user?.resources?.bloodRune.maxValue}}
-  <br/>frostRune: {{user?.resources?.frostRune.value}} ({{user?.resources?.frostRune.partial}}) / {{user?.resources?.frostRune.maxValue}}
-  <br/>unholyRune: {{user?.resources?.unholyRune.value}} ({{user?.resources?.unholyRune.partial}}) / {{user?.resources?.unholyRune.maxValue}}
-  <br/>runicPoint: {{user?.resources?.runicPoint.value}} ({{user?.resources?.runicPoint.partial}}) / {{user?.resources?.runicPoint.maxValue}}
-  <br/>manaPoint: {{user?.resources?.manaPoint.value}} ({{user?.resources?.manaPoint.partial}}) / {{user?.resources?.manaPoint.maxValue}}
-  <br/>lifePoint: {{user?.resources?.lifePoint.value}} ({{user?.resources?.lifePoint.partial}}) / {{user?.resources?.lifePoint.maxValue}}
-  <br/>rage: {{user?.resources?.rage.value}} ({{user?.resources?.rage.partial}}) / {{user?.resources?.rage.maxValue}}
-  <br/>energy: {{user?.resources?.energy.value}} ({{user?.resources?.energy.partial}}) / {{user?.resources?.energy.maxValue<br/>}}
-
+<h1 (click)="toogleResourcesDisplay()">User Resources :</h1>
+<div *ngIf="showResources">
+  bloodRune: {{user?.resources?.bloodRune.value}} 
+  <span *ngIf="settings?.turnToRegen?.bloodRune > 0">
+    ({{user?.resources?.bloodRune.partial}}/{{settings?.turnToRegen?.bloodRune}})
+  </span>
+  / {{user?.resources?.bloodRune.maxValue}}
+    <br/>frostRune: {{user?.resources?.frostRune.value}} 
+  <span *ngIf="settings?.turnToRegen?.frostRune > 0">
+    ({{user?.resources?.frostRune.partial}}/{{settings?.turnToRegen?.frostRune}})
+  </span>
+  / {{user?.resources?.frostRune.maxValue}}
+    <br/>unholyRune: {{user?.resources?.unholyRune.value}}
+  <span *ngIf="settings?.turnToRegen?.unholyRune > 0">
+    ({{user?.resources?.unholyRune.partial}}/{{settings?.turnToRegen?.unholyRune}})
+  </span>
+  / {{user?.resources?.unholyRune.maxValue}}
+    <br/>runicPoint: {{user?.resources?.runicPoint.value}}
+  <span *ngIf="settings?.turnToRegen?.runicPoint > 0">
+    ({{user?.resources?.runicPoint.partial}}/{{settings?.turnToRegen?.runicPoint}})
+  </span>
+  / {{user?.resources?.runicPoint.maxValue}}
+  <br/>manaPoint: {{user?.resources?.manaPoint.value}}
+  <span *ngIf="settings?.turnToRegen?.manaPoint > 0">
+    ({{user?.resources?.manaPoint.partial}}/{{settings?.turnToRegen?.manaPoint}})
+  </span>
+  / {{user?.resources?.manaPoint.maxValue}}
+  <br/>lifePoint: {{user?.resources?.lifePoint.value}}
+  <span *ngIf="settings?.turnToRegen?.lifePoint > 0">
+    ({{user?.resources?.lifePoint.partial}}/{{settings?.turnToRegen?.lifePoint}})
+  </span>
+  / {{user?.resources?.lifePoint.maxValue}}
+  <br/>rage: {{user?.resources?.rage.value}}
+  <span *ngIf="settings?.turnToRegen?.rage > 0">
+    ({{user?.resources?.rage.partial}}/{{settings?.turnToRegen?.rage}})
+  </span>
+  / {{user?.resources?.rage.maxValue}}
+  <br/>energy: {{user?.resources?.energy.value}}
+  <span *ngIf="settings?.turnToRegen?.energy > 0">
+    ({{user?.resources?.energy.partial}}/{{settings?.turnToRegen?.energy}})
+  </span>
+  / {{user?.resources?.energy.maxValue}}
+</div>
