@@ -1,0 +1,21 @@
+:host {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+:host(.selected) {
+  display: inline-block;
+  border: 2px solid blue;
+  padding: 9px;
+}
+
+:host(.targetUser) {
+  background-color: lightblue;
+}
+:host(.targetFriend) {
+  background-color: lightgreen;
+}
+:host(.targetEnemy) {
+  background-color: lightcoral;
+}

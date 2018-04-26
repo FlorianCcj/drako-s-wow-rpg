@@ -11,6 +11,9 @@ import { CoreModule } from './core/core.module';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserAditionalCharacteristicsComponent } from './components/user-aditional-characteristics/user-aditional-characteristics.component';
+import { TargetListComponent } from './components/target-list/target-list.component';
+import { TargetDetailComponent } from './components/target-detail/target-detail.component';
+import { TargetCreationComponent } from './components/target-creation/target-creation.component';
 
 
 @NgModule({
@@ -20,6 +23,9 @@ import { UserAditionalCharacteristicsComponent } from './components/user-adition
     SpellListComponent,
     UserEditComponent,
     UserAditionalCharacteristicsComponent,
+    TargetListComponent,
+    TargetDetailComponent,
+    TargetCreationComponent,
   ],
   imports: [
     BrowserModule,

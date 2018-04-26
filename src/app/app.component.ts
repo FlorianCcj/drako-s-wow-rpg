@@ -12,13 +12,18 @@ import { AddUser } from './core/store/user/user.actions';
 })
 export class AppComponent {
   public user$: Observable<CharacterModel>;
+  public targetList$: Observable<CharacterModel[]>;
+  public selectedList$: Observable<CharacterModel[]>;
 
   constructor(
     private store: Store<AppState>
   ) {
     this.user$ = this.store.select(appState => appState.user.user);
+    this.targetList$ = this.store.select(appState => appState.target.list);
+    this.selectedList$ = this.store.select(appState => appState.target.target);
     this.store.dispatch(new AddUser({
       name: 'moi',
+      type: 'user',
       characteristics: {
         force: {value: 25},
         agilite: {value: 10},

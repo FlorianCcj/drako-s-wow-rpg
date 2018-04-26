@@ -5,6 +5,12 @@
 ></app-user-ressources-->
 <button (click)="handleNewRoundClick()">New Round</button>
 <button (click)="handleHaveANapClick()">Have a nap</button>
+<app-target-creation></app-target-creation>
+<app-target-list
+  [targetList]="targetList$ | async"
+  [selectedList]="selectedList$ | async"
+  [user]="user$ | async"
+></app-target-list>
 <app-spell-list></app-spell-list>
 
 button: next turn

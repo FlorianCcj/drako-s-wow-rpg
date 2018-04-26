@@ -6,11 +6,12 @@ import { AditionalCharacteristicsModel } from './aditional-characteristics.model
 
 export class CharacterModel extends ModelClass {
   name: string = null;
+  type: string = null;
   resources: ResourceModel = new ResourceModel();
   characteristics: CharacteristicsModel = new CharacteristicsModel();
   aditionalCharacteristics: AditionalCharacteristicsModel = new AditionalCharacteristicsModel();
   buffs: BuffModel[] = [];
-  debuff: BuffModel[] = [];
+  debuffs: BuffModel[] = [];
 
   constructor (data?: any) {
     super();

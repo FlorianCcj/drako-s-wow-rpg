@@ -1,0 +1,11 @@
+<form [formGroup]="targetForm" (ngSubmit)="saveTarget()">
+  <label for="name">Name: </label>
+  <input id="name" formControlName="name"/>
+  <br/>
+  <label for="type">Type: </label>
+  <select formControlName="type">
+      <option *ngFor="let type of targetTypeList" [value]="type.value">{{type.title}}</option>
+   </select>`
+  <br/>
+  <button type="submit">Save</button>
+</form>

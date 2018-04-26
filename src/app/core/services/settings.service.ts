@@ -36,9 +36,9 @@ export class SettingsService {
   };
 
   public turnToRegen = {
-    bloodRune: 3,
-    frostRune: 3,
-    unholyRune: 3,
+    bloodRune: 8,
+    frostRune: 8,
+    unholyRune: 8,
     runicPoint: -1,
     manaPoint: 100,
     lifePoint: 100,
