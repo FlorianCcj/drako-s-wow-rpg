@@ -4,6 +4,7 @@ import { AppState } from './core/store/store.variables';
 import { Observable } from 'rxjs/Observable';
 import { CharacterModel } from './models/character.model';
 import { AddTarget } from './core/store/target/target.actions';
+import { NewRound } from './core/store/spell/spell.actions';
 
 @Component({
   selector: 'app-root',
@@ -45,7 +46,7 @@ export class AppComponent {
   }
 
   handleNewRoundClick() {
-    // this.store.dispatch(new NewRound());
+    this.store.dispatch(new NewRound());
   }
 
   handleHaveANapClick() {

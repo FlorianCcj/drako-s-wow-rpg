@@ -7,8 +7,8 @@ export class SettingsService {
     frostRune: 2,
     unholyRune: 2,
     runicPoint: 100,
-    manaPoint: -1,
-    lifePoint: -1,
+    manaPoint: 100000,
+    lifePoint: 100000,
     rage: 100,
     energy: 100,
   };

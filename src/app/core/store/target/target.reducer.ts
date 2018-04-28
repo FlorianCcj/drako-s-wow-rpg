@@ -2,7 +2,7 @@
 import * as targetActions from '../target/target.actions';
 import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
-import { dealBuff, asignBuffToTarget } from '../../utils/store';
+import { dealBuff, asignBuffToTarget, regenNewRound, returnStateResource } from '../../utils/store';
 
 export interface TargetState {
   user: CharacterModel;
@@ -38,6 +38,22 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
         list: newTargetList,
         target: [],
         user: !!findUser ? asignBuffToTarget(findUser, action.payload) : {...state.user},
+      };
+    case spellActions.NEW_ROUND:
+      return {...state,
+        user: {...state.user,
+          resources: {
+            ...state.user.resources,
+            bloodRune: returnStateResource(state.user.resources.bloodRune, 'bloodRune'),
+            frostRune: returnStateResource(state.user.resources.frostRune, 'frostRune'),
+            unholyRune: returnStateResource(state.user.resources.unholyRune, 'unholyRune'),
+            runicPoint: returnStateResource(state.user.resources.runicPoint, 'runicPoint'),
+            manaPoint: returnStateResource(state.user.resources.manaPoint, 'manaPoint'),
+            lifePoint: returnStateResource(state.user.resources.lifePoint, 'lifePoint'),
+            rage: returnStateResource(state.user.resources.rage, 'rage'),
+            energy: returnStateResource(state.user.resources.energy, 'energy'),
+          }
+        }
       };
     default:
       return state;

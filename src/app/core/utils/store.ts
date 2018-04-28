@@ -14,13 +14,26 @@ export function type<T>(label: T | ''): T {
   return <T>label;
 }
 
+export function returnStateResource(ressourceState, property) {
+  const newResource = regenNewRound(
+    ressourceState.value,
+    ressourceState.partial,
+    property
+  );
+  return {
+    ...ressourceState,
+    value: newResource.user,
+    partial: newResource.partial,
+  };
+}
+
 export function regenNewRound(oldUserState, oldPartialState, property) {
   const maxProperty = maxResources[property];
   const turnToRegenProperty = turnToRegen[property];
   let newUserState = oldUserState;
   let newPartialState = oldPartialState;
 
-  if (turnToRegenProperty !== -1 && oldUserState < maxProperty) {
+  if (turnToRegenProperty !== -1 && (oldUserState < maxProperty && maxProperty !== -1)) {
     if (oldPartialState < turnToRegenProperty - 1) {
       newPartialState++;
     } else {

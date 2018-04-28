@@ -7,3 +7,9 @@ export class CastSpell implements Action {
   readonly type = CAST_SPELL;
   constructor(public payload: any) {}
 }
+
+export const NEW_ROUND = type('[Round] New Round');
+
+export class NewRound implements Action {
+  readonly type = NEW_ROUND;
+}

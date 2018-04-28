@@ -1,9 +1,29 @@
 <h1 (click)="toogleAditionalCharacteristicsDisplay()">Aditional Characteristics</h1>
 
-<div *ngIf="showAditionalCharacteristics">
-  armor: {{buffBonus?.armor?.value}}
-  <br/>manaPoint: {{buffBonus?.manaPoint?.value}}
-  <br/>lifePoint: {{buffBonus?.lifePoint?.value}}
-  <br/>criticalChance: {{buffBonus?.criticalChance?.value}}
-  <br/>dodgeChance: {{buffBonus?.dodgeChance?.value}}
-</div>
+<form [formGroup]="userForm" *ngIf="showAditionalCharacteristics" (input)="calculBonus()">
+  <div>
+    <label for="armor">armor</label>
+    <br/><input id="armor" placeholder="armor" type="number" formControlName="armor"/>
+    + {{buffBonus?.armor?.value}}
+  </div>
+  <div>
+    <label for="manaPoint">manaPoint</label>
+    <br/><input id="manaPoint" placeholder="manaPoint" type="number" formControlName="manaPoint"/>
+    + {{buffBonus?.manaPoint?.value}}
+  </div>
+  <div>
+    <label for="lifePoint">lifePoint</label>
+    <br/><input id="lifePoint" placeholder="lifePoint" type="number" formControlName="lifePoint"/>
+    + {{buffBonus?.lifePoint?.value}}
+  </div>
+  <div>
+    <label for="criticalChance">criticalChance</label>
+    <br/><input id="criticalChance" placeholder="criticalChance" type="number" formControlName="criticalChance"/>
+    + {{buffBonus?.criticalChance?.value}}
+  </div>
+  <div>
+    <label for="dodgeChance">dodgeChance</label>
+    <br/><input id="dodgeChance" placeholder="dodgeChance" type="number" formControlName="dodgeChance"/>
+    + {{buffBonus?.dodgeChance?.value}}
+  </div>
+</form>

@@ -25,11 +25,11 @@ export class UserEditComponent implements OnChanges {
 
   initForm() {
     this.userForm = this.fb.group({
-      force: this.fb.control(''),
-      agilite: this.fb.control(''),
-      vitalite: this.fb.control(''),
-      intel: this.fb.control(''),
-      charisme: this.fb.control(''),
+      force: this.fb.control(null),
+      agilite: this.fb.control(null),
+      vitalite: this.fb.control(null),
+      intel: this.fb.control(null),
+      charisme: this.fb.control(null),
     });
   }
 
