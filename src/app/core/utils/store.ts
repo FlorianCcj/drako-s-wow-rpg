@@ -1,8 +1,11 @@
 import { SettingsService } from '../services/settings.service';
 import { CharacterModel } from '../../models/character.model';
+import { ResourceUnityModel } from '../../models/resource-unity.model';
 
 const settings = new SettingsService();
 const maxResources = settings.maxResources;
+const initResources = settings.initResources;
+const initPartial = settings.initPartial;
 const turnToRegen = settings.turnToRegen;
 
 const typeCache: { [label: string]: boolean } = {};
@@ -12,6 +15,17 @@ export function type<T>(label: T | ''): T {
   }
   typeCache[<string>label] = true;
   return <T>label;
+}
+
+export function regenResources() {
+  const newResources = {};
+  for (const carac in initResources) {
+    if (initResources.hasOwnProperty(carac)) {
+      const caracValue = initResources[carac] === -1 ? maxResources[carac] : initResources[carac] ;
+      newResources[carac] = new ResourceUnityModel(caracValue, maxResources[carac], initPartial[carac]);
+    }
+  }
+  return newResources;
 }
 
 export function returnStateResource(ressourceState, property) {

@@ -13,3 +13,9 @@ export const NEW_ROUND = type('[Round] New Round');
 export class NewRound implements Action {
   readonly type = NEW_ROUND;
 }
+
+export const HAVE_A_NAP = type('[Round] Have a nap');
+
+export class HaveANap implements Action {
+  readonly type = HAVE_A_NAP;
+}

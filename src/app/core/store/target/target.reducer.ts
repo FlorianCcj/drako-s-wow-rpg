@@ -2,7 +2,7 @@
 import * as targetActions from '../target/target.actions';
 import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
-import { dealBuff, asignBuffToTarget, regenNewRound, returnStateResource } from '../../utils/store';
+import { dealBuff, asignBuffToTarget, regenNewRound, returnStateResource, regenResources } from '../../utils/store';
 
 export interface TargetState {
   user: CharacterModel;
@@ -55,6 +55,14 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
           }
         }
       };
+    case spellActions.HAVE_A_NAP:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          resources: regenResources()
+        }
+      }
     default:
       return state;
   }

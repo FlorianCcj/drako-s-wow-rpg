@@ -1,7 +1,9 @@
 import { BonusModel } from './bonus.model';
 
 export class ResourceUnityModel {
-  value = new BonusModel();
-  maxValue: number = null;
-  partial: number = null;
+  constructor(
+    public value = new BonusModel(),
+    public maxValue: number = null,
+    public partial: number = null
+  ) {}
 }

@@ -14,14 +14,14 @@ export class SettingsService {
   };
 
   public initResources = {
-    bloodRune: 2,
-    frostRune: 2,
-    unholyRune: 2,
+    bloodRune: -1,
+    frostRune: -1,
+    unholyRune: -1,
     runicPoint: 0,
     manaPoint: -1,
     lifePoint: -1,
     rage: 0,
-    energy: 100,
+    energy: -1,
   };
 
   public initPartial = {
