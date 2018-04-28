@@ -5,11 +5,12 @@ import { ResourceModel } from './resource.model';
 
 export class BuffModel extends ModelClass {
   name = '';
-  damagePerRound = 0;
   type: any = null;
   resources: ResourceModel = null;
   characteristics: CharacteristicsModel = null;
   aditionalCharacteristics: AditionalCharacteristicsModel = null;
+  damagePerRound = 0;
+  initDuration = 0;
   duration = 0;
 
   constructor (data?: any) {

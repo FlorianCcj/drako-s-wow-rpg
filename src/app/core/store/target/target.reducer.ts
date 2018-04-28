@@ -2,7 +2,7 @@
 import * as targetActions from '../target/target.actions';
 import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
-import { dealBuff } from '../../utils/store';
+import { dealBuff, asignBuffToTarget } from '../../utils/store';
 
 export interface TargetState {
   user: CharacterModel;
@@ -32,10 +32,12 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
       return {...state, list: state.list.filter((target) => target !== action.payload)};
     case spellActions.CAST_SPELL:
       const newTargetList = dealBuff(state, action);
+      const newUser = asignBuffToTarget(state.user, action);
       return {
         ...state,
         list: newTargetList,
-        target: []
+        target: [],
+        user: newUser,
       };
     default:
       return state;

@@ -36,19 +36,22 @@ export class SpellListComponent implements OnInit {
         name: 'tsointsoin', type: 'buff',
         aditionalCharacteristics: {
           armor: {value: 2, unit: '%'}
-        }
+        },
+        duration: -1,
       }),
       new BuffModel({
         name: 'carapace de glace', type: 'buff',
         aditionalCharacteristics: {
           armor: {value: 50, unit: '%'}
-        }
+        },
+        duration: 10,
       }),
       new BuffModel({
         name: 'Toucher de glace', type: 'debuff',
         aditionalCharacteristics: {
           armor: {value: 50, unit: '%'}
-        }
+        },
+        duration: 3,
       }),
     ];
     this.showData = this.spells.map((spell) => {

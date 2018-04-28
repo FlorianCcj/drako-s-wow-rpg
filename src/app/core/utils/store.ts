@@ -37,16 +37,19 @@ export function dealBuff(targetState, buff) {
   return targetState.list.map((target: CharacterModel) => {
     const finder = targetState.target.find((targetI) => targetI.name === target.name);
     if (!!finder) {
-      if (buff.payload.type === 'buff') {
-        return {...target, buffs: [...target.buffs, buff.payload]};
-      } else if (buff.payload.type === 'debuff') {
-        return {...target, debuffs: [...target.debuffs, buff.payload]};
-      } else {
-        return {...target};
-      }
+      return asignBuffToTarget(target, buff.payload);
     } else {
       return {...target};
     }
   });
+}
 
+export function asignBuffToTarget(target, buff) {
+  if (buff.type === 'buff') {
+    return {...target, buffs: [...target.buffs, buff]};
+  } else if (buff.type === 'debuff') {
+    return {...target, debuffs: [...target.debuffs, buff]};
+  } else {
+    return {...target};
+  }
 }
