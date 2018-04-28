@@ -32,12 +32,12 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
       return {...state, list: state.list.filter((target) => target !== action.payload)};
     case spellActions.CAST_SPELL:
       const newTargetList = dealBuff(state, action);
-      const newUser = asignBuffToTarget(state.user, action);
+      const findUser = state.target.find((target) => target.type === 'user');
       return {
         ...state,
         list: newTargetList,
         target: [],
-        user: newUser,
+        user: !!findUser ? asignBuffToTarget(findUser, action.payload) : {...state.user},
       };
     default:
       return state;
