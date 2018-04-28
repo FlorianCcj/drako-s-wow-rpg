@@ -2,6 +2,7 @@
 import * as targetActions from '../target/target.actions';
 import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
+import { dealBuff } from '../../utils/store';
 
 export interface TargetState {
   user: CharacterModel;
@@ -18,9 +19,6 @@ export const initialTargetState = {
 export function targetReducer(state: TargetState = initialTargetState, action) {
   switch (action.type) {
     case targetActions.ADD_TARGET:
-      if (action.payload.type === 'user') {
-
-      }
       return {
         ...state,
         user: action.payload.type === 'user' ? action.payload : state.user,
@@ -33,22 +31,10 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
     case targetActions.DELETE_TARGET:
       return {...state, list: state.list.filter((target) => target !== action.payload)};
     case spellActions.CAST_SPELL:
+      const newTargetList = dealBuff(state, action);
       return {
         ...state,
-        list: state.list.map((target: CharacterModel) => {
-          const finder = state.target.find((targetI) => targetI.name === target.name);
-          if (!!finder) {
-            if (action.payload.type === 'buff') {
-              return {...target, buffs: [...target.buffs, action.payload]};
-            } else if (action.payload.type === 'debuff') {
-              return {...target, debuffs: [...target.debuffs, action.payload]};
-            } else {
-              return {...target};
-            }
-          } else {
-            return {...target};
-          }
-        }),
+        list: newTargetList,
         target: []
       };
     default:

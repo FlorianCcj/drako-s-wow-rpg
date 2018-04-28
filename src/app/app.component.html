@@ -1,8 +1,10 @@
-<app-user-edit [user]="user$ | async"></app-user-edit>
-<app-user-aditional-characteristics [user]="user$ | async"></app-user-aditional-characteristics>
-<app-user-ressources 
-  [user]="user$ | async"
-></app-user-ressources>
+<div class="user-carac">
+  <app-user-edit [user]="user$ | async"></app-user-edit>
+  <app-user-aditional-characteristics [user]="user$ | async"></app-user-aditional-characteristics>
+  <app-user-ressources 
+    [user]="user$ | async"
+  ></app-user-ressources>
+</div>
 <button (click)="handleNewRoundClick()">New Round</button>
 <button (click)="handleHaveANapClick()">Have a nap</button>
 <app-target-creation></app-target-creation>

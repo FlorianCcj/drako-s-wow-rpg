@@ -1,4 +1,5 @@
 import { SettingsService } from '../services/settings.service';
+import { CharacterModel } from '../../models/character.model';
 
 const settings = new SettingsService();
 const maxResources = settings.maxResources;
@@ -30,4 +31,22 @@ export function regenNewRound(oldUserState, oldPartialState, property) {
     newPartialState = 0;
   }
   return {user: newUserState, partial: newPartialState};
+}
+
+export function dealBuff(targetState, buff) {
+  return targetState.list.map((target: CharacterModel) => {
+    const finder = targetState.target.find((targetI) => targetI.name === target.name);
+    if (!!finder) {
+      if (buff.payload.type === 'buff') {
+        return {...target, buffs: [...target.buffs, buff.payload]};
+      } else if (buff.payload.type === 'debuff') {
+        return {...target, debuffs: [...target.debuffs, buff.payload]};
+      } else {
+        return {...target};
+      }
+    } else {
+      return {...target};
+    }
+  });
+
 }
