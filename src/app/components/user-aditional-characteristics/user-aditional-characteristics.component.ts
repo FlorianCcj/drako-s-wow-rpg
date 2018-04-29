@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { CharacterModel } from '../../models/character.model';
 import { AditionalCharacteristicsModel } from '../../models/aditional-characteristics.model';
-import {calculateBonus, calculTotalBonus} from '../../core/utils/buff.utils';
+import { calculAditionalCharacBonus, calculAditionalCharacTotalBonus} from '../../core/utils/buff.utils';
 import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-user-aditional-characteristics',
@@ -29,8 +29,8 @@ export class UserAditionalCharacteristicsComponent implements OnChanges {
   }
 
   calculBonus() {
-    [this.aditionalCharacteristics, this.aditionalPercent] = calculateBonus(this.user.buffs);
-    this.buffBonus = calculTotalBonus(
+    [this.aditionalCharacteristics, this.aditionalPercent] = calculAditionalCharacBonus(this.user.buffs);
+    this.buffBonus = calculAditionalCharacTotalBonus(
       this.formatTochararcterModel(this.userForm.value),
       this.aditionalCharacteristics,
       this.aditionalPercent

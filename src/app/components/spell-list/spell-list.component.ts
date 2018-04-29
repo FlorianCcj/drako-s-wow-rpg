@@ -5,6 +5,8 @@ import { takeChild } from '../../core/utils/utils';
 import { AppState } from '../../core/store/store.variables';
 import { Store } from '@ngrx/store';
 import { CastSpell } from '../../core/store/spell/spell.actions';
+import { BonusModel } from '../../models/bonus.model';
+import { ResourceUnityModel } from '../../models/resource-unity.model';
 
 @Component({
   selector: 'app-spell-list',
@@ -18,11 +20,14 @@ export class SpellListComponent implements OnInit {
       title: 'name',
       field: ['name'],
     }, {
-      title: 'Type',
-      field: ['type']
+      title: 'runicPoint',
+      field: ['resources', 'runicPoint', 'value', 'value']
     }, {
       title: 'Armor',
-      field: ['aditionalCharacteristics', 'armor']
+      field: ['aditionalCharacteristics', 'armor', 'value']
+    }, {
+      title: 'force',
+      field: ['characteristics', 'force', 'value']
     }
   ];
   spells: BuffModel[] = [];
@@ -37,6 +42,10 @@ export class SpellListComponent implements OnInit {
         aditionalCharacteristics: {
           armor: {value: 2, unit: '%'}
         },
+        characteristics: {
+          force: new BonusModel(2),
+        },
+        resources: {runicPoint: {value: new BonusModel(10)}},
         duration: -1,
       }),
       new BuffModel({
@@ -55,7 +64,10 @@ export class SpellListComponent implements OnInit {
       }),
     ];
     this.showData = this.spells.map((spell) => {
-      return this.columns.map(column => this.takeField(spell, [...column.field]));
+      return this.columns.map(column => {
+        const field = this.takeField(spell, [...column.field]);
+        return JSON.stringify({...spell}) === JSON.stringify({...field}) ? null : field;
+      });
     });
   }
 

@@ -62,7 +62,7 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
           ...state.user,
           resources: regenResources()
         }
-      }
+      };
     default:
       return state;
   }
