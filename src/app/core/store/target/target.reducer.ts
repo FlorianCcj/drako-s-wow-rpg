@@ -3,6 +3,7 @@ import * as targetActions from '../target/target.actions';
 import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
 import { dealBuff, asignBuffToTarget, regenNewRound, returnStateResource, regenResources } from '../../utils/store';
+import { reducBuffDuration } from '../../utils/buff.utils';
 
 export interface TargetState {
   user: CharacterModel;
@@ -27,9 +28,9 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
     case targetActions.TARGET_TARGET:
       return {...state, target: [...state.target, new CharacterModel(action.payload)]};
     case targetActions.REMOVE_TARGET:
-      return {...state, target: state.target.filter((target) => target !== action.payload)};
+      return {...state, target: state.target.filter((target) => target.name !== action.payload.name)};
     case targetActions.DELETE_TARGET:
-      return {...state, list: state.list.filter((target) => target !== action.payload)};
+      return {...state, list: state.list.filter((target) => target.name !== action.payload.name)};
     case spellActions.CAST_SPELL:
       const newTargetList = dealBuff(state, action);
       const findUser = state.target.find((target) => target.type === 'user');
@@ -52,8 +53,15 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
             lifePoint: returnStateResource(state.user.resources.lifePoint, 'lifePoint'),
             rage: returnStateResource(state.user.resources.rage, 'rage'),
             energy: returnStateResource(state.user.resources.energy, 'energy'),
-          }
-        }
+          },
+          buffs: reducBuffDuration(state.user.buffs),
+          debuffs: reducBuffDuration(state.user.debuffs),
+        },
+        list: state.list.map(target => ({
+          ...target,
+          buffs: reducBuffDuration(state.user.buffs),
+          debuffs: reducBuffDuration(state.user.debuffs),
+        })),
       };
     case spellActions.HAVE_A_NAP:
       return {

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CharacterModel } from '../../models/character.model';
+import { AppState } from '../../core/store/store.variables';
+import { Store } from '@ngrx/store';
+import { DeleteTarget } from '../../core/store/target/target.actions';
 
 @Component({
   selector: 'app-target-detail',
@@ -10,7 +13,11 @@ export class TargetDetailComponent implements OnInit {
 
   @Input() target: CharacterModel;
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
+
+  deleteTarget(target) {
+    this.store.dispatch(new DeleteTarget(target));
+  }
 
   ngOnInit() {
   }

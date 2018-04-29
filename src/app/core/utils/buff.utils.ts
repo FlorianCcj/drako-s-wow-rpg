@@ -1,5 +1,13 @@
 import {AditionalCharacteristicsModel} from '../../models/aditional-characteristics.model';
 import { CharacteristicsModel } from '../../models/characteristics.model';
+import { BuffModel } from '../../models/buff.model';
+
+export function reducBuffDuration(buffs: BuffModel[]) {
+  return buffs
+    .map((buff) => ({...buff, duration: buff.duration !== -1 ? (buff.duration - 1) : -1}))
+    .filter(buff => buff.duration !== 0)
+  ;
+}
 
 export function calculAditionalCharacTotalBonus(userData, userunitBonus, percentBonus) {
   const percentOfUser = new AditionalCharacteristicsModel();

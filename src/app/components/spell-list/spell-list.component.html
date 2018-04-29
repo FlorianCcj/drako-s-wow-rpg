@@ -5,6 +5,6 @@
     </th>
   </tr>
   <tr *ngFor="let spell of showData" (click)="castSpell(spell[0])">
-    <td *ngFor="let cell of spell">{{cell | json}}</td>
+    <td *ngFor="let cell of spell">{{printBonusValue(cell) | json}}</td>
   </tr>
 </table>

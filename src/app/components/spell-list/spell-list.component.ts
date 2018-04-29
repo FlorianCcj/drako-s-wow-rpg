@@ -21,13 +21,13 @@ export class SpellListComponent implements OnInit {
       field: ['name'],
     }, {
       title: 'runicPoint',
-      field: ['resources', 'runicPoint', 'value', 'value']
+      field: ['resources', 'runicPoint', 'value']
     }, {
       title: 'Armor',
-      field: ['aditionalCharacteristics', 'armor', 'value']
+      field: ['aditionalCharacteristics', 'armor']
     }, {
       title: 'force',
-      field: ['characteristics', 'force', 'value']
+      field: ['characteristics', 'force']
     }
   ];
   spells: BuffModel[] = [];
@@ -83,5 +83,13 @@ export class SpellListComponent implements OnInit {
   castSpell(spellName) {
     const finder = this.spells.find((spellI) => spellI.name === spellName);
     this.store.dispatch(new CastSpell(finder));
+  }
+
+  printBonusValue(bonus) {
+    if (isObject(bonus) && bonus.hasOwnProperty('value') && bonus.hasOwnProperty('unit')) {
+      return bonus.unit !== 'unit' ? `${bonus.value}${bonus.unit}` : `${bonus.value}`;
+    } else {
+      return bonus;
+    }
   }
 }
