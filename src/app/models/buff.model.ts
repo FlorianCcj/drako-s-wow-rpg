@@ -12,6 +12,7 @@ export class BuffModel extends ModelClass {
   damagePerRound = 0;
   initDuration = 0;
   duration = 0;
+  cooldown = 0;
 
   constructor (data?: any) {
     super();

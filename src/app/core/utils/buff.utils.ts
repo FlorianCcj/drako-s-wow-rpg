@@ -4,8 +4,12 @@ import { BuffModel } from '../../models/buff.model';
 
 export function reducBuffDuration(buffs: BuffModel[]) {
   return buffs
-    .map((buff) => ({...buff, duration: buff.duration !== -1 ? (buff.duration - 1) : -1}))
-    .filter(buff => buff.duration !== 0)
+    .map((buff) => ({
+      ...buff,
+      duration: (buff.duration === -1 || buff.duration === 0) ? buff.duration : (buff.duration - 1),
+      cooldown: (buff.cooldown === -1 || buff.cooldown === 0) ? buff.cooldown : (buff.cooldown - 1),
+    }))
+    .filter(buff => !(buff.duration === 0 && buff.cooldown === 0))
   ;
 }
 

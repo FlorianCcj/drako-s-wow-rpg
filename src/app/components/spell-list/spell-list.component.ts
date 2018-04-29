@@ -54,6 +54,7 @@ export class SpellListComponent implements OnInit {
           armor: {value: 50, unit: '%'}
         },
         duration: 10,
+        cooldown: 20,
       }),
       new BuffModel({
         name: 'Toucher de glace', type: 'debuff',

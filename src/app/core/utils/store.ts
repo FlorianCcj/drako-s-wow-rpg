@@ -75,9 +75,9 @@ export function regenNewRound(oldUserState, oldPartialState, property) {
   return {user: newUserState, partial: newPartialState};
 }
 
-export function dealBuff(targetState, buff) {
-  return targetState.list.map((target: CharacterModel) => {
-    const finder = targetState.target.find((targetI) => targetI.name === target.name);
+export function dealBuff(list, targetList, buff) {
+  return list.map((target: CharacterModel) => {
+    const finder = targetList.find((targetI) => targetI.name === target.name);
     if (!!finder) {
       return asignBuffToTarget(target, buff.payload);
     } else {
@@ -88,7 +88,7 @@ export function dealBuff(targetState, buff) {
 
 export function asignBuffToTarget(target: CharacterModel, buff: BuffModel) {
   const findBuff = target.buffs.find(buffI => buffI.name === buff.name);
-  if (!(!!findBuff && findBuff.duration === -1)) {
+  if (!(!!findBuff && findBuff.duration === -1) && buff) {
     if (buff.type === 'buff') {
       return {...target, buffs: [...target.buffs, buff]};
     } else if (buff.type === 'debuff') {
