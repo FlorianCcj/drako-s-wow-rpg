@@ -1,6 +1,8 @@
 import { SettingsService } from '../services/settings.service';
 import { CharacterModel } from '../../models/character.model';
 import { ResourceUnityModel } from '../../models/resource-unity.model';
+import { BuffModel } from '../../models/buff.model';
+import { ResourceModel } from '../../models/resource.model';
 
 const settings = new SettingsService();
 const maxResources = settings.maxResources;
@@ -26,6 +28,19 @@ export function regenResources() {
     }
   }
   return newResources;
+}
+
+export function useResources(user: CharacterModel, spell: BuffModel) {
+  const newResources = {...user.resources};
+  for (const resource in newResources) {
+    if (spell.resources.hasOwnProperty(resource)) {
+      newResources[resource].value += spell.resources[resource].value.value;
+    }
+  }
+  return {
+    ...user,
+    resources: newResources,
+  };
 }
 
 export function returnStateResource(ressourceState, property) {
@@ -71,11 +86,16 @@ export function dealBuff(targetState, buff) {
   });
 }
 
-export function asignBuffToTarget(target, buff) {
-  if (buff.type === 'buff') {
-    return {...target, buffs: [...target.buffs, buff]};
-  } else if (buff.type === 'debuff') {
-    return {...target, debuffs: [...target.debuffs, buff]};
+export function asignBuffToTarget(target: CharacterModel, buff: BuffModel) {
+  const findBuff = target.buffs.find(buffI => buffI.name === buff.name);
+  if (!(!!findBuff && findBuff.duration === -1)) {
+    if (buff.type === 'buff') {
+      return {...target, buffs: [...target.buffs, buff]};
+    } else if (buff.type === 'debuff') {
+      return {...target, debuffs: [...target.debuffs, buff]};
+    } else {
+      return {...target};
+    }
   } else {
     return {...target};
   }

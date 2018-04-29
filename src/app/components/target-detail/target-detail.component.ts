@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CharacterModel } from '../../models/character.model';
 import { AppState } from '../../core/store/store.variables';
 import { Store } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { DeleteTarget } from '../../core/store/target/target.actions';
   templateUrl: './target-detail.component.html',
   styleUrls: ['./target-detail.component.scss']
 })
-export class TargetDetailComponent implements OnInit {
+export class TargetDetailComponent {
 
   @Input() target: CharacterModel;
 
@@ -18,8 +18,4 @@ export class TargetDetailComponent implements OnInit {
   deleteTarget(target) {
     this.store.dispatch(new DeleteTarget(target));
   }
-
-  ngOnInit() {
-  }
-
 }

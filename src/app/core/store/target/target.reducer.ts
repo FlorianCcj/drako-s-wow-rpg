@@ -2,8 +2,9 @@
 import * as targetActions from '../target/target.actions';
 import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
-import { dealBuff, asignBuffToTarget, regenNewRound, returnStateResource, regenResources } from '../../utils/store';
+import { dealBuff, asignBuffToTarget, regenNewRound, returnStateResource, regenResources, useResources } from '../../utils/store';
 import { reducBuffDuration } from '../../utils/buff.utils';
+import { BuffModel } from '../../../models/buff.model';
 
 export interface TargetState {
   user: CharacterModel;
@@ -32,13 +33,24 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
     case targetActions.DELETE_TARGET:
       return {...state, list: state.list.filter((target) => target.name !== action.payload.name)};
     case spellActions.CAST_SPELL:
-      const newTargetList = dealBuff(state, action);
-      const findUser = state.target.find((target) => target.type === 'user');
+      const newTargetList = dealBuff(state, action).filter(target => target && target.type !== 'user');
+      let findUser = state.target.find((target) => target && target.type === 'user');
+      if (!!findUser) {
+        findUser = new CharacterModel(
+          asignBuffToTarget(
+            new CharacterModel(useResources(
+              findUser,
+              action.payload
+            )),
+            action.payload
+          )
+        );
+      }
       return {
         ...state,
-        list: newTargetList,
+        list: [findUser, ...newTargetList],
         target: [],
-        user: !!findUser ? asignBuffToTarget(findUser, action.payload) : {...state.user},
+        user: !!findUser ? findUser : {...state.user},
       };
     case spellActions.NEW_ROUND:
       return {...state,
