@@ -3,46 +3,46 @@
 <form [formGroup]="userForm" *ngIf="showCarac">
     <div>
     <label for="force">Force</label>
-    <input 
+    <br/><input 
       id="force" name="force" placeholder="force" 
       type="number" class="form-control" formControlName="force"
-    >
+    /> (+ {{buffBonus?.force.value}})
     <br/>Dice: {{calculPropertyDiceToLaunch('force') ? calculPropertyDiceToLaunch('force') : 0}}
     + {{calculPropertyAutoSucceed('force') ? calculPropertyAutoSucceed('force') : 0}} auto succeed
   </div>
   <div>
     <label for="agilite">agilite</label>
-    <input 
+    <br/><input 
       id="agilite" name="agilite" placeholder="agilite" 
       type="number" class="form-control" formControlName="agilite"
-    >
+    />(+ {{buffBonus?.agilite.value}})
     <br/>Dice: {{calculPropertyDiceToLaunch('agilite') ? calculPropertyDiceToLaunch('agilite') : 0}}
     + {{calculPropertyAutoSucceed('agilite') ? calculPropertyAutoSucceed('agilite') : 0}} auto succeed
   </div>
   <div>
     <label for="vitalite">vitalite</label>
-    <input 
+    <br/><input 
       id="vitalite" name="vitalite" placeholder="vitalite" 
       type="number" class="form-control" formControlName="vitalite"
-    > 
+    /> (+ {{buffBonus?.vitalite.value}})
     <br/>Dice: {{calculPropertyDiceToLaunch('vitalite') ? calculPropertyDiceToLaunch('vitalite') : 0 }}
     + {{calculPropertyAutoSucceed('vitalite') ? calculPropertyAutoSucceed('vitalite') : 0 }} auto succeed
   </div>
   <div>
     <label for="intel">intel</label>
-    <input 
+    <br/><input 
       id="intel" name="intel" placeholder="intel" 
       type="number" class="form-control" formControlName="intel"
-    >
+    /> (+ {{buffBonus?.intel.value}})
     <br/>Dice: {{calculPropertyDiceToLaunch('intel') ? calculPropertyDiceToLaunch('intel') : 0}}
     + {{calculPropertyAutoSucceed('intel') ? calculPropertyAutoSucceed('intel') : 0 }} auto succeed
   </div>
   <div>
     <label for="charisme">charisme</label>
-    <input 
+    <br/><input 
       id="charisme" name="charisme" placeholder="charisme" 
       type="number" class="form-control" formControlName="charisme"
-    >
+    /> (+ {{buffBonus?.charisme.value}})
     <br/>Dice: {{calculPropertyDiceToLaunch('charisme') ? calculPropertyDiceToLaunch('charisme') : 0 }}
     + {{calculPropertyAutoSucceed('charisme') ? calculPropertyAutoSucceed('charisme') : 0 }} auto succeed
   </div>

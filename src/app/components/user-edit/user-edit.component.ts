@@ -2,6 +2,8 @@ import { Component, OnChanges, Input } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { CharacterModel } from '../../models/character.model';
 import {calculCaracAutoSucceed, calculDiceToLaunch} from '../../core/utils/dice';
+import { CharacteristicsModel } from '../../models/characteristics.model';
+import { calculCharacCharacBonus, calculCharacTotalBonus } from '../../core/utils/buff.utils';
 
 @Component({
   selector: 'app-user-edit',
@@ -14,6 +16,10 @@ export class UserEditComponent implements OnChanges {
   public userForm: FormGroup;
   showCarac = true;
 
+  aditionalCharacteristics: CharacteristicsModel;
+  aditionalPercent: CharacteristicsModel;
+  buffBonus: CharacteristicsModel;
+
   constructor(private fb: FormBuilder) {
     this.initForm();
   }
@@ -21,6 +27,7 @@ export class UserEditComponent implements OnChanges {
   ngOnChanges() {
     this.user = new CharacterModel(this.user);
     this.initFormValue();
+    this.calculBonus();
   }
 
   initForm() {
@@ -46,11 +53,30 @@ export class UserEditComponent implements OnChanges {
   }
 
   calculPropertyAutoSucceed(property) {
-    return calculCaracAutoSucceed(this.userForm.value[property]);
+    return calculCaracAutoSucceed(this.userForm.value[property] + this.buffBonus[property].value);
   }
 
   calculPropertyDiceToLaunch(property) {
-    return calculDiceToLaunch(this.userForm.value[property]);
+    return calculDiceToLaunch(this.userForm.value[property] + this.buffBonus[property].value);
+  }
+
+  calculBonus() {
+    [this.aditionalCharacteristics, this.aditionalPercent] = calculCharacCharacBonus(this.user.buffs);
+    this.buffBonus = calculCharacTotalBonus(
+      this.formatTochararcterModel(this.userForm.value),
+      this.aditionalCharacteristics,
+      this.aditionalPercent
+    );
+  }
+
+  formatTochararcterModel(formValue) {
+    return {
+      force: {value: formValue.force},
+      agilite: {value: formValue.agilite},
+      vitalite: {value: formValue.vitalite},
+      intel: {value: formValue.intel},
+      charisme: {value: formValue.charisme},
+    };
   }
 
   toogleUserCaracVisibility() {

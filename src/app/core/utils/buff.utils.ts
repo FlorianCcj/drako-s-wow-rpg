@@ -49,13 +49,13 @@ export function calculCharacCharacBonus(bonusSource) {
   const newUnitBonus = new CharacteristicsModel();
 
   bonusSource.forEach((buff) => {
-    for (const carac in buff.aditionalCharacteristics) {
-      if (buff.aditionalCharacteristics.hasOwnProperty(carac)) {
-        if (buff.aditionalCharacteristics[carac].unit === 'unit') {
-          newUnitBonus[carac].value += buff.aditionalCharacteristics[carac].value;
+    for (const carac in buff.characteristics) {
+      if (buff.characteristics.hasOwnProperty(carac)) {
+        if (buff.characteristics[carac].unit === 'unit') {
+          newUnitBonus[carac].value += buff.characteristics[carac].value;
         }
-        if (buff.aditionalCharacteristics[carac].unit === '%') {
-          newPercentBonus[carac].value += buff.aditionalCharacteristics[carac].value;
+        if (buff.characteristics[carac].unit === '%') {
+          newPercentBonus[carac].value += buff.characteristics[carac].value;
         }
       }
     }
