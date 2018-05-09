@@ -33,7 +33,11 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
     case targetActions.DELETE_TARGET:
       return {...state, list: state.list.filter((target) => target.name !== action.payload.name)};
     case spellActions.CAST_SPELL:
-      const newTargetList = dealBuff(state.list, state.target, action).filter(target => target && target.type !== 'user');
+      const newTargetList = dealBuff(
+        state.list.filter(target => target && target.type !== 'user'),
+        state.target,
+        action
+      );
       let findUser = state.target.find((target) => target && target.type === 'user');
       if (!!findUser) {
         findUser = new CharacterModel(
@@ -45,12 +49,14 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
             action.payload
           )
         );
+      } else {
+        findUser = state.user;
       }
       return {
         ...state,
         list: [findUser, ...newTargetList],
         target: [],
-        user: !!findUser ? findUser : {...state.user},
+        user: findUser,
       };
     case spellActions.NEW_ROUND:
       return {...state,

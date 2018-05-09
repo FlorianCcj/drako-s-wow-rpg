@@ -1,8 +1,10 @@
 <h1>TargetList</h1>
-<app-target-detail
-  *ngFor="let target of targetList"
-  (click)="handleClickTarget(target)"
-  [target]="target"
-  [class.selected]="isSelected(target)"
-  [ngClass]="targetClass(target)"
-></app-target-detail>
+<ng-container *ngFor="let target of targetList">
+  <app-target-detail
+    *ngIf="target"
+    (click)="handleClickTarget(target)"
+    [target]="target"
+    [class.selected]="isSelected(target)"
+    [ngClass]="targetClass(target)"
+  ></app-target-detail>
+</ng-container>

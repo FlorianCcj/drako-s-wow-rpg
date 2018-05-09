@@ -34,11 +34,11 @@ export class TargetListComponent {
   }
 
   targetClass(target: CharacterModel) {
-    return {
+    return target ? {
       targetUser: target.type === 'user',
       targetFriend: target.type === 'friend',
       targetEnemy: target.type === 'enemy',
-    };
+    } : {targetEmpty: true};
   }
 
 }
