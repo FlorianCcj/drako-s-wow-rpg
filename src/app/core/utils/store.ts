@@ -116,3 +116,19 @@ export function patchCharacteristics(userState: CharacterModel, characteristics)
     ...userCharacteristics,
   };
 }
+
+export function patchAditionalCharacteristics(userState: CharacterModel, aditionalcharacteristics) {
+  const userAditionalcharacteristics = {};
+  for (const aditionalcharacteristic in aditionalcharacteristics) {
+    if (aditionalcharacteristics.hasOwnProperty(aditionalcharacteristic)) {
+      userAditionalcharacteristics[aditionalcharacteristic] = {
+        ...userState[aditionalcharacteristic],
+        value: aditionalcharacteristics[aditionalcharacteristic],
+      };
+    }
+  }
+
+  return {
+    ...userAditionalcharacteristics,
+  };
+}

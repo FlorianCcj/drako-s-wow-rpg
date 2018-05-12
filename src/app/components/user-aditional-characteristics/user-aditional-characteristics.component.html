@@ -1,6 +1,6 @@
 <h1 (click)="toogleAditionalCharacteristicsDisplay()">Aditional Characteristics</h1>
 
-<form [formGroup]="userForm" *ngIf="showAditionalCharacteristics" (input)="calculBonus()">
+<form [formGroup]="userForm" *ngIf="showAditionalCharacteristics" (input)="handleChangeFormValue(userForm.value)">
   <div>
     <label for="armor">armor</label>
     <br/><input id="armor" placeholder="armor" type="number" formControlName="armor"/>

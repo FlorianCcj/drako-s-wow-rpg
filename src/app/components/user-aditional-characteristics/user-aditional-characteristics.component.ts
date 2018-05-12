@@ -3,6 +3,9 @@ import { CharacterModel } from '../../models/character.model';
 import { AditionalCharacteristicsModel } from '../../models/aditional-characteristics.model';
 import { calculAditionalCharacBonus, calculAditionalCharacTotalBonus} from '../../core/utils/buff.utils';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { AppState } from '../../core/store/store.variables';
+import { Store } from '@ngrx/store';
+import { PatchUserSAditionalCharacteristics } from '../../core/store/target/target.actions';
 @Component({
   selector: 'app-user-aditional-characteristics',
   templateUrl: './user-aditional-characteristics.component.html',
@@ -18,7 +21,10 @@ export class UserAditionalCharacteristicsComponent implements OnChanges {
 
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppState>,
+  ) {
     this.initForm();
   }
 
@@ -69,6 +75,10 @@ export class UserAditionalCharacteristicsComponent implements OnChanges {
 
   toogleAditionalCharacteristicsDisplay() {
     this.showAditionalCharacteristics = !this.showAditionalCharacteristics;
+  }
+
+  handleChangeFormValue(formValue) {
+    this.store.dispatch(new PatchUserSAditionalCharacteristics(formValue));
   }
 
 }

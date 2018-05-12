@@ -9,7 +9,8 @@ import {
   returnStateResource,
   regenResources,
   useResources,
-  patchCharacteristics
+  patchCharacteristics,
+  patchAditionalCharacteristics
 } from '../../utils/store';
 import { reducBuffDuration } from '../../utils/buff.utils';
 import { BuffModel } from '../../../models/buff.model';
@@ -34,6 +35,14 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
         user: {
           ...state.user,
           characteristics: patchCharacteristics(state.user, action.payload)
+        }
+      };
+    case targetActions.PATCH_USER_S_ADITIONAL_CHARACTERISTICS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          aditionalCharacteristics: patchAditionalCharacteristics(state.user, action.payload)
         }
       };
     case targetActions.ADD_TARGET:
