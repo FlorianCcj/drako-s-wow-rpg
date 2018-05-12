@@ -1,6 +1,6 @@
 <h1 (click)="toogleUserCaracVisibility()">User Carac</h1>
 
-<form [formGroup]="userForm" *ngIf="showCarac">
+<form [formGroup]="userForm" *ngIf="showCarac" (input)=handleChangeFormValue(userForm.value)>
     <div>
     <label for="force">Force</label>
     <br/><input 

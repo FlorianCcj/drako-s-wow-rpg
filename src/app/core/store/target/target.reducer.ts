@@ -2,7 +2,15 @@
 import * as targetActions from '../target/target.actions';
 import * as spellActions from '../spell/spell.actions';
 import { CharacterModel } from '../../../models/character.model';
-import { dealBuff, asignBuffToTarget, regenNewRound, returnStateResource, regenResources, useResources } from '../../utils/store';
+import {
+  dealBuff,
+  asignBuffToTarget,
+  regenNewRound,
+  returnStateResource,
+  regenResources,
+  useResources,
+  patchCharacteristics
+} from '../../utils/store';
 import { reducBuffDuration } from '../../utils/buff.utils';
 import { BuffModel } from '../../../models/buff.model';
 
@@ -20,6 +28,14 @@ export const initialTargetState = {
 
 export function targetReducer(state: TargetState = initialTargetState, action) {
   switch (action.type) {
+    case targetActions.PATCH_USER_S_CHARACTERISTICS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          characteristics: patchCharacteristics(state.user, action.payload)
+        }
+      };
     case targetActions.ADD_TARGET:
       return {
         ...state,

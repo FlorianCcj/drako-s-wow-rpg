@@ -4,6 +4,9 @@ import { CharacterModel } from '../../models/character.model';
 import {calculCaracAutoSucceed, calculDiceToLaunch} from '../../core/utils/dice';
 import { CharacteristicsModel } from '../../models/characteristics.model';
 import { calculCharacCharacBonus, calculCharacTotalBonus } from '../../core/utils/buff.utils';
+import { AppState } from '../../core/store/store.variables';
+import { Store } from '@ngrx/store';
+import { PatchUserSCharacteristics } from '../../core/store/target/target.actions';
 
 @Component({
   selector: 'app-user-edit',
@@ -20,7 +23,10 @@ export class UserEditComponent implements OnChanges {
   aditionalPercent: CharacteristicsModel;
   buffBonus: CharacteristicsModel;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private store: Store<AppState>,
+  ) {
     this.initForm();
   }
 
@@ -81,5 +87,9 @@ export class UserEditComponent implements OnChanges {
 
   toogleUserCaracVisibility() {
     this.showCarac = !this.showCarac;
+  }
+
+  handleChangeFormValue(formValue) {
+    this.store.dispatch(new PatchUserSCharacteristics(formValue));
   }
 }

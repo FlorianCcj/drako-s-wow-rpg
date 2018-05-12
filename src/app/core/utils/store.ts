@@ -100,3 +100,19 @@ export function asignBuffToTarget(target: CharacterModel, buff: BuffModel) {
     return {...target};
   }
 }
+
+export function patchCharacteristics(userState: CharacterModel, characteristics) {
+  const userCharacteristics = {};
+  for (const characteristic in characteristics) {
+    if (characteristics.hasOwnProperty(characteristic)) {
+      userCharacteristics[characteristic] = {
+        ...userState[characteristic],
+        value: characteristics[characteristic],
+      };
+    }
+  }
+
+  return {
+    ...userCharacteristics,
+  };
+}
