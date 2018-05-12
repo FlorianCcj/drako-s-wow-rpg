@@ -50,7 +50,10 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
           )
         );
       } else {
-        findUser = state.user;
+        findUser = new CharacterModel(useResources(
+          state.user,
+          action.payload
+        ));
       }
       return {
         ...state,
@@ -77,8 +80,8 @@ export function targetReducer(state: TargetState = initialTargetState, action) {
         },
         list: state.list.map(target => ({
           ...target,
-          buffs: reducBuffDuration(state.user.buffs),
-          debuffs: reducBuffDuration(state.user.debuffs),
+          buffs: reducBuffDuration(target.buffs),
+          debuffs: reducBuffDuration(target.debuffs),
         })),
       };
     case spellActions.HAVE_A_NAP:

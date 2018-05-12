@@ -40,10 +40,12 @@ export class SpellListComponent implements OnInit {
       new BuffModel({
         name: 'tsointsoin', type: 'buff',
         aditionalCharacteristics: {
-          armor: {value: 2, unit: '%'}
+          criticalChance: {value: 2, unit: 'unit'},
+          dodgeChance: {value: 2, unit: 'unit'},
         },
         characteristics: {
-          force: new BonusModel(2),
+          force: new BonusModel(10, '%'),
+          agilite: new BonusModel(10, '%'),
         },
         resources: {runicPoint: {value: new BonusModel(10)}},
         duration: -1,
@@ -51,17 +53,38 @@ export class SpellListComponent implements OnInit {
       new BuffModel({
         name: 'carapace de glace', type: 'buff',
         aditionalCharacteristics: {
-          armor: {value: 50, unit: '%'}
+          armor: {value: 50, unit: '%'},
         },
-        duration: 10,
-        cooldown: 20,
+        duration: 3,
+        cooldown: 10,
+      }),
+      new BuffModel({
+        name: 'sang vampirique', type: 'buff',
+        duration: 3,
+        cooldown: 10,
+      }),
+      new BuffModel({
+        name: 'protection magique', type: 'buff',
+        resources: {runicPoint: {value: new BonusModel(-20)}},
+        duration: 3,
+        cooldown: 10,
       }),
       new BuffModel({
         name: 'Toucher de glace', type: 'debuff',
-        aditionalCharacteristics: {
-          armor: {value: 50, unit: '%'}
-        },
+        resources: {frostRune: {value: new BonusModel(-1)}},
         duration: 3,
+      }),
+      new BuffModel({
+        name: 'Frappe de peste', type: 'debuff',
+        resources: {unholyRune: {value: new BonusModel(-1)}},
+        duration: 3,
+      }),
+      new BuffModel({
+        name: 'Frappe de mort', type: 'debuff',
+        resources: {
+          frostRune: {value: new BonusModel(-1)},
+          unholyRune: {value: new BonusModel(-1)},
+        },
       }),
     ];
     this.showData = this.spells.map((spell) => {

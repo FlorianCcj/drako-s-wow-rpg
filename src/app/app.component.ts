@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { CharacterModel } from './models/character.model';
 import { AddTarget } from './core/store/target/target.actions';
 import { NewRound, HaveANap } from './core/store/spell/spell.actions';
+import {BonusModel} from './models/bonus.model';
 
 @Component({
   selector: 'app-root',
@@ -26,11 +27,18 @@ export class AppComponent {
       name: 'moi',
       type: 'user',
       characteristics: {
-        force: {value: 25},
-        agilite: {value: 10},
-        vitalite: {value: 25},
-        intel: {value: 10},
-        charisme: {value: 10},
+        force: {value: 39},
+        agilite: {value: 2},
+        vitalite: {value: 27},
+        intel: {value: 2},
+        charisme: {value: 2},
+      },
+      aditionalCharacteristics: {
+        armor: new BonusModel(0, 'unit'),
+        manaPoint: new BonusModel(0, 'unit'),
+        lifePoint: new BonusModel(0, 'unit'),
+        criticalChance: new BonusModel(0, 'unit'),
+        dodgeChance: new BonusModel(0, 'unit'),
       },
       resources: {
         bloodRune: {value: 0, partial: 0, maxValue: 2},
