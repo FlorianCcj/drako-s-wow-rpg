@@ -31,12 +31,19 @@ export class SpellListComponent implements OnInit {
     }
   ];
   spells: BuffModel[] = [];
+  filteredSpells: BuffModel[] = [];
   showData: any[] = [];
+  filters: any = {};
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
-    this.spells = [
+    this.spells = this.initSpells();
+    this.showData = this.initShowData(this.spells);
+  }
+
+  initSpells() {
+    return [
       new BuffModel({
         name: 'tsointsoin', type: 'buff',
         aditionalCharacteristics: {
@@ -87,18 +94,52 @@ export class SpellListComponent implements OnInit {
         },
       }),
     ];
-    this.showData = this.spells.map((spell) => {
+  }
+
+  initShowData(spells) {
+    return spells.map((spell) => {
       return this.columns.map(column => {
-        const field = this.takeField(spell, [...column.field]);
+        const field = this.takeField({...spell}, [...column.field]);
         return JSON.stringify({...spell}) === JSON.stringify({...field}) ? null : field;
       });
     });
   }
 
+  addFilterToList($event, column) {
+    if (column) {
+      if ($event) {
+        this.filters[column] = $event;
+      } else {
+        this.filters[column] = null;
+      }
+    }
+  }
+
+  applyFilter(spells, filters) {
+    let newSpellList = [...spells];
+    for (const filter in filters) {
+      if (filters[filter] !== null && filters[filter] !== undefined && filters[filter] !== '') {
+        newSpellList = newSpellList.filter((spell) => {
+          const column = {...this.columns.find((col) => col.title === filter)};
+          const spellValue = this.takeField({...spell}, column.field);
+          return JSON.stringify(spellValue).includes(filters[filter]);
+        });
+      }
+    }
+    return newSpellList;
+  }
+
+  filterColumn($event, column) {
+    this.addFilterToList($event, column);
+    this.filteredSpells = this.applyFilter(this.spells, this.filters);
+    this.showData = this.initShowData(this.filteredSpells);
+  }
+
   takeField(parent, path) {
+    const pathOfExtraction = [...path];
     if (path && path[0] && parent && parent[path[0]]) {
-      const pathToFollow = path.shift();
-      return this.takeField(parent[pathToFollow], path);
+      const pathToFollow = pathOfExtraction.shift();
+      return this.takeField(parent[pathToFollow], pathOfExtraction);
     } else {
       return parent;
     }
