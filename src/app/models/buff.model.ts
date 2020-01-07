@@ -13,6 +13,8 @@ export class BuffModel extends ModelClass {
   initDuration = 0;
   duration = 0;
   cooldown = 0;
+  description = '';
+  damageCalcul = '';
 
   constructor (data?: any) {
     super();

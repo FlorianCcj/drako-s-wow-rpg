@@ -1,155 +1,144 @@
 [
   {
-    "name": "Aneantissement",
-    "class": "dk",
-    "type": "attack"
+    "name": "frappe de mort",
+    "type": "debuff",
+    "resources": {
+      "frostRune": {"value": {"value": -1, "unit": "unit"}},
+      "unholyRune": {"value": {"value": -1, "unit": "unit"}},
+      "runicPoint": {"value": {"value": 20, "unit": "unit"}}
+    },
+    "description": "regen pv D*F",
+    "damageCalcul": "A*D+2*F"
   }, {
-    "name": "Chaines de glace",
-    "class": "dk",
-    "type": "attack"
+    "name": "toucher de glace",
+    "type": "debuff",
+    "resources": {
+      "frostRune": {"value": {"value": -1, "unit": "unit"}},
+      "runicPoint": {"value": {"value": 10, "unit": "unit"}}
+    },
+    "damageCalcul": "F+D(3* F)"
   }, {
-    "name": "Tsointsoin",
-    "class": "dk",
-    "type": "buff"
+    "name": "frappe de peste",
+    "type": "debuff",
+    "resources": {
+      "unholyRune": {"value": {"value": -1, "unit": "unit"}},
+      "runicPoint": {"value": {"value": 10, "unit": "unit"}}
+    },
+    "damageCalcul": "A+F+D(3* F)"
   }, {
-    "name": "Frappe de givre",
-    "class": "dk",
-    "type": "attack"
+    "name": "mort et decompo",
+    "type": "debuff",
+    "resources": {
+      "unholyRune": {"value": {"value": -1, "unit": "unit"}},
+      "frostRune": {"value": {"value": -1, "unit": "unit"}},
+      "bloodRune": {"value": {"value": -1, "unit": "unit"}},
+      "runicPoint": {"value": {"value": 30, "unit": "unit"}}
+    },
+    "damageCalcul": "D(3* (D*F))"
   }, {
-    "name": "Frappe purulante",
-    "class": "dk",
-    "type": "attack"
+    "name": "poigne de la mort",
+    "type": "debuff",
+    "cooldown": 4,
+    "description": "attire vers moi, me donne un coup"
+  }, {
+    "name": "poigne de la mort",
+    "type": "debuff",
+    "cooldown": 4
+  }, {
+    "name": "goule",
+    "type": "buff",
+    "description": "damage, F stat 1/2 moi cd 10",
+    "cooldown": 10
+  }, {
+    "name": "viens la que je te mange",
+    "type": "buff",
+    "resources": {
+      "runicPoint": {"value": {"value": -40, "unit": "unit"}}
+    },
+    "description": "(instant) damage, F stat 1/2 moi cd 10, pv init de la goule",
+    "cooldown": 10
+  }, {
+    "name": "protection magique",
+    "type": "buff",
+    "resources": {
+      "runicPoint": {"value": {"value": -20, "unit": "unit"}}
+    },
+    "cooldown": 10,
+    "duration": 3,
+    "description": "magic damage/2"
+  }, {
+    "name": "robustesse glaciale",
+    "type": "buff",
+    "aditionalCharacteristics": {
+      "armor": {"value": 200, "unit": "%"}
+    },
+    "description": "instant, armure * 2",
+    "cooldown": 10,
+    "duration": 3
+  }, {
+    "name": "tsointsoin",
+    "type": "buff",
+    "resources": {
+      "runicPoint": {"value": {"value": 10, "unit": "unit"}}
+    },
+    "description": "2/20 crit 2/20 esquive 10% For 10% Agi",
+    "cooldown": 1,
+    "duration": -1
+  }, {
+    "name": "frappe au coeur",
+    "type": "debuff",
+    "resources": {
+      "bloodRune": {"value": {"value": -1, "unit": "unit"}},      
+      "runicPoint": {"value": {"value": 10, "unit": "unit"}}
+    },
+    "description": "2/20 crit 2/20 esquive 10% For 10% Agi",
+    "damageCalcul": "A + 2*F"
   }, {
     "name": "Frappe runique",
-    "class": "dk",
-    "type": "attack"
+    "type": "debuff",
+    "resources": {
+      "runicPoint": {"value": {"value": -20, "unit": "unit"}}
+    },
+    "description": "si esquive ou parade",
+    "damageCalcul": "2*A"
   }, {
-    "name": "Froid devorant",
-    "class": "dk",
-    "type": "attack"
+    "name": "voile mortel",
+    "type": "debuff",
+    "resources": {
+      "runicPoint": {"value": {"value": -20, "unit": "unit"}}
+    },
+    "aditionalCharacteristics": {
+      "criticalChance": {"value": 2, "unit": "unit"}
+    },
+    "damageCalcul": "2*F",
+    "description": "cumul crit *5"
   }, {
-    "name": "Gel de l'esprit",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Passage de givre",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Pillier de givre",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Rafale hurlante",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Renforcer l'arme runique",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Robustesse glaciale",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Toucher de glace",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Armee des morts",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Carapasse anti-magie",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Frappe de peste",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Frappe necrotique",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Mort et decomposition",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Poigne de la mort",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Porte de la mort",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Pousse de fievre",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Reanimation d'un alié",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "reanimation morbide",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Voile mortel",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "drain sanglant",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "frappe de mort",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Frappe de sang",
-    "class": "dk",
-    "type": "attack"
+    "name": "rafale hurlante",
+    "type": "debuff",
+    "resources": {
+      "frostRune": {"value": {"value": -1, "unit": "unit"}},
+      "unholyRune": {"value": {"value": -1, "unit": "unit"}},
+      "runicPoint": {"value": {"value": 20, "unit": "unit"}}
+    },
+    "damageCalcul": "3*F",
+    "description": "aoe"
   }, {
     "name": "furoncle sanglant",
-    "class": "dk",
-    "type": "attack"
+    "type": "debuff",
+    "resources": {
+      "bloodRune": {"value": {"value": -1, "unit": "unit"}},
+      "runicPoint": {"value": {"value": 10, "unit": "unit"}}
+    },
+    "damageCalcul": "2*F",
+    "description": "aoe"
   }, {
-    "name": "Pacte mortel",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Pestilance",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "sombre ordre",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Sombre simulacre",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Strangulation",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Connexion runique",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Arme runique dansante",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Bouclier d'os",
-    "class": "dk",
-    "type": "attack"
-  }, {
-    "name": "Sang vamipirique",
-    "class": "dk",
-    "type": "attack"
+    "name": "armee des morts",
+    "type": "debuff",
+    "resources": {
+      "bloodRune": {"value": {"value": -1, "unit": "unit"}},
+      "runicPoint": {"value": {"value": 10, "unit": "unit"}}
+    },
+    "description": "F/10 goules, 1/8 de moi",
+    "cooldown": 20
   }
 ]

@@ -9,7 +9,8 @@
       <input (input)="filterColumn($event?.target?.value, column?.title)" type="text"/>
     </th>
   </tr>
-  <tr *ngFor="let spell of showData" (click)="castSpell(spell[0])">
-    <td *ngFor="let cell of spell">{{printBonusValue(cell) | json}}</td>
+  <tr *ngFor="let spell of initShowData(showData$ | async)" (click)="castSpell(spell[0])">
+    <!--<tr *ngFor="let spell of showData" (click)="castSpell(spell[0])">-->
+      <td *ngFor="let cell of spell">{{printBonusValue(cell) | json}}</td>
   </tr>
 </table>

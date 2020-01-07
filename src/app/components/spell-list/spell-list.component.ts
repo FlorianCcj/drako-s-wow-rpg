@@ -7,6 +7,9 @@ import { Store } from '@ngrx/store';
 import { CastSpell } from '../../core/store/spell/spell.actions';
 import { BonusModel } from '../../models/bonus.model';
 import { ResourceUnityModel } from '../../models/resource-unity.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-spell-list',
@@ -31,11 +34,19 @@ export class SpellListComponent implements OnInit {
     }
   ];
   spells: BuffModel[] = [];
+  spells$: Observable<any>;
+  spellsSubscription$: Subscription;
   filteredSpells: BuffModel[] = [];
   showData: any[] = [];
   filters: any = {};
 
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private store: Store<AppState>,
+    private http: HttpClient,
+  ) {
+    this.spells$ = this.http.get('assets/spells/spells.json');
+    this.spellsSubscription$ = this.spells$.subscribe(spells => this.spells = spells);
+  }
 
   ngOnInit() {
     this.spells = this.initSpells();
@@ -93,6 +104,16 @@ export class SpellListComponent implements OnInit {
           unholyRune: {value: new BonusModel(-1)},
         },
       }),
+      new BuffModel({
+        "name": "furoncle sanglant",
+        "type": "debuff",
+        "resources": {
+          "bloodRune": {"value": {"value": -1, "unit": "unit"}},
+          "runicPoint": {"value": {"value": 10, "unit": "unit"}}
+        },
+        "damageCalcul": "2*F",
+        "description": "aoe"
+      }), 
     ];
   }
 
